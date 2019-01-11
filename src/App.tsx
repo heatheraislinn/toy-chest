@@ -1,28 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Lamp from './Lamp';
 
+// Create class component
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    // Set state
+    state = {
+        on: false
+    }
+    //constructor(props: any) {
+        //super(props);
+        //this.state = {
+            //on: ""
+        //}
+    //}
+
+    // Methods
+    buttonOn = () => {
+        this.setState({
+            on: true
+        });
+    }
+    buttonOff = () => {
+        this.setState({
+            on: false
+        });
+    }
+
+    // JSX
+    render() {
+        return (
+            <div>
+                <Lamp on={this.state.on}></Lamp>
+                <div className="buttonDiv">
+                    <button className="on-button" onClick={this.buttonOn}>ON</button>
+                    <button className="off-button" onClick={this.buttonOff}>OFF</button>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
